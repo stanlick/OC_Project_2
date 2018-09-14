@@ -43,7 +43,11 @@ public class ProductTests {
 	public void test_product_type() {
 		Product p = new Product();
 		p.setType("Test Type");
+<<<<<<< HEAD
 		assertThat(p.getType()).isEqualTo("Test Type");
+=======
+		assertThat(p.getType()).isEqualTo("Test type");
+>>>>>>> branch 'master' of https://github.com/stanlick/OC_Project_2
 	}
 	
 	@Test
