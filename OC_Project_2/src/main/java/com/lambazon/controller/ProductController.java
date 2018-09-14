@@ -5,6 +5,7 @@ import com.lambazon.model.Product;
 import com.lambazon.repository.ProductRepository;
 import com.lambazon.service.ProductService;
 
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,11 @@ public class ProductController {
     
     @RequestMapping(path = "products", method = RequestMethod.POST)
 	public String saveProduct(Product product) {
-		productService.save(product);
+    	if (Strings.isBlank(product.getId())) {
+    		productService.save(product);
+		} else {
+			productService.update(product);
+		}
 		return "redirect:/products";
 	}
 

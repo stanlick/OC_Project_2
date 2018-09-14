@@ -43,7 +43,7 @@ public class ProductTests {
 	public void test_product_type() {
 		Product p = new Product();
 		p.setType("Test Type");
-		assertThat(p.getType()).isEqualTo("Test type");
+		assertThat(p.getType()).isEqualTo("Test Type");
 	}
 	
 	@Test

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Product {
@@ -20,6 +21,16 @@ public class Product {
 	private String type;
 	private String category;
 	private Double price;
+	@Transient
+	private AuditInfo auditInfo;
+
+	public AuditInfo getAuditInfo() {
+		return auditInfo;
+	}
+
+	public void setAuditInfo(AuditInfo auditInfo) {
+		this.auditInfo = auditInfo;
+	}
 
 	public Product() {
 	}
@@ -49,7 +60,8 @@ public class Product {
 	}
 
 	public String getType() {
-		return type;
+		// TODO
+		return null;
 	}
 
 	public void setType(String type) {
@@ -69,9 +81,18 @@ public class Product {
 	}
 
 	public void setPrice(Double price) throws IllegalArgumentException {
-		if (price <= 0.0) {
-			throw new IllegalArgumentException("Price must be greater than 0.0");
-		}
+		//TODO COmmenting this out for a quick test and then I'll remember "<wink>" to uncomment 
+//		if (price <= 0.0) {
+//			throw new IllegalArgumentException("Price must be greater than 0.0");
+//		}
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Product [id=%s, name=%s, description=%s, type=%s, category=%s, price=%s, auditInfo=%s]",
+				id, name, description, type, category, price, auditInfo);
+	}
+	
+	
 }
