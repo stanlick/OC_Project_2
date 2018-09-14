@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
 import com.lambazon.model.AuditInfo;
 import com.lambazon.model.Product;
 import com.lambazon.repository.ProductRepository;
@@ -48,33 +47,6 @@ public class ProductService {
 
     public void delete(String id) {
     	MaintenanceTracker.delete(id);
-=======
-import com.lambazon.model.Product;
-import com.lambazon.repository.ProductRepository;
-
-@Service
-public class ProductService {
-
-	@Autowired
-    private ProductRepository productRepository;
-
-
-    public void save(Product product) {
-        productRepository.save(product);
-    }
-
-   
-    public List<Product> getAll() {
-        return productRepository.findAll();
-    }
-    
-    public Product getById(String id) {
-        return productRepository.getOne(id);
-    }
-
-
-    public void delete(String id) {
->>>>>>> branch 'master' of https://github.com/stanlick/OC_Project_2
         productRepository.deleteById(id);
     }
 }
