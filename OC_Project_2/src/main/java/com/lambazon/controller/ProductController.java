@@ -33,7 +33,7 @@ public class ProductController {
     @RequestMapping(path = "products", method = RequestMethod.POST)
 	public String saveProduct(Product product) {
     	if (Strings.isBlank(product.getId())) {
-    		productService.save(product);
+    		productService.add(product);
 		} else {
 			productService.update(product);
 		}
@@ -55,7 +55,7 @@ public class ProductController {
 
 	@RequestMapping(path = "/products/delete/{id}", method = RequestMethod.GET)
 	public String deleteProduct(@PathVariable(name = "id") String id) {
-		productService.delete(id);
+		productService.delete(productService.getById(id));
 		return "redirect:/products";
 	}
 }

@@ -42,8 +42,8 @@ public class ProductTests {
 	@Test
 	public void test_product_type() {
 		Product p = new Product();
-		p.setType("Test Type");
-		assertThat(p.getType()).isEqualTo("Test type");
+		p.setType("Audio");
+		assertThat(p.getType()).isEqualTo("Audio");
 	}
 	
 	@Test

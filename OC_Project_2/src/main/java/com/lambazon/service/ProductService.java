@@ -23,15 +23,15 @@ public class ProductService {
 	}
 
 
-	public Product save(Product product) {
-    	product.setAuditInfo(new AuditInfo(product, "save"));
-    	MaintenanceTracker.save(product);
+	public Product add(Product product) {
+    	product.setAuditInfo(new AuditInfo("add"));
+    	MaintenanceTracker.log(product);
         return productRepository.save(product);
     }
 	
 	public Product update(Product product) {
-    	product.setAuditInfo(new AuditInfo(product, "update"));
-    	MaintenanceTracker.save(product);
+    	product.setAuditInfo(new AuditInfo("update"));
+    	MaintenanceTracker.log(product);
         return productRepository.save(product);
     }
 
@@ -45,8 +45,9 @@ public class ProductService {
     }
 
 
-    public void delete(String id) {
-    	MaintenanceTracker.delete(id);
-        productRepository.deleteById(id);
+    public void delete(Product product) {
+    	product.setAuditInfo(new AuditInfo("delete"));
+    	MaintenanceTracker.log(product);
+        productRepository.deleteById(product.getId());
     }
 }

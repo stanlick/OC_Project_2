@@ -10,7 +10,7 @@ public class AuditInfo {
 	
 	
 	
-	public AuditInfo(Product what, String action) {
+	public AuditInfo(String action) {
 		super();
 		who = System.getProperty("user.name"); 
 		this.action = action;

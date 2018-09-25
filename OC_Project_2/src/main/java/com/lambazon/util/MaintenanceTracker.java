@@ -2,6 +2,7 @@ package com.lambazon.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,40 +19,33 @@ import com.lambazon.model.Product;
 
 public class MaintenanceTracker {
 
-	private static Map<String, List<Product>> changesByProductId = new HashMap<>();
-	private static List<String> deletedProducts = new ArrayList<>();	
-	
+	private static List<Product> maintenanceLog = new ArrayList<>();
 
 	
-	public static void save(Product product) {
-		List<Product> changesForProductId = changesByProductId.get(product.getId());
-		if (changesForProductId==null) {
-			changesForProductId = new ArrayList<>();
-		}
-		changesForProductId.add(product);
-		
-		changesByProductId.put(product.getId(), changesForProductId);
-	}
+	public static void log(Product product) {
+		maintenanceLog.add(product);
+	}	
 
-	public static void delete(String id) {
-		deletedProducts.add(id);
+	public static long getNumberOfAdds() {
+		long count = 0;
+		// compute number of operations
+		return count;
 	}
 	
-	public static long getNumberOfSavesForProduct(Product product) {
-		return changesByProductId.get(product.getId()).size();
+	public static long getNumberOfUpdates() {
+		long count = 0;		
+		// compute number of operations
+		return count;
 	}
 	
-	public static long getNumberOfSaves() {
-		return changesByProductId.size();
+	public static long getNumberOfDeletes() {
+		long count = 0;		
+		// compute number of operations	
+		return count;
 	}
 	
-	public static long getNumberOfDeleted() {
-		return deletedProducts.size();
-	}
-	
-	public static void resetAllStatistics() {
-		changesByProductId.clear();
-		deletedProducts.clear();
+	public static void resetLogs() {
+		maintenanceLog.clear();
 	}
 }
 
